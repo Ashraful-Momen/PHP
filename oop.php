@@ -221,7 +221,7 @@
 //  $obj-> greating();
 //  $obj->byebye();
 #=========================================Trait=====================================================
-// trait is a global function that can able to use in any class for class calling the trait function inside of a class "use" keyword need to call the trait function.
+// trait is a global function that can able to use in any class for class calling the trait, inside of a class "use" keyword need to call the trait class.
 
 trait A{
   public function greating (){
