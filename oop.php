@@ -220,4 +220,19 @@
 //  $obj=new C();
 //  $obj-> greating();
 //  $obj->byebye();
+#=========================================Trait=====================================================
+// trait is a global function that can able to use in any class for class calling the trait function inside of a class "use" keyword need to call the trait function.
+
+trait A{
+  public function greating (){
+    echo "hi";
+  }
+  trait B{ public function bye (){
+    echo "Bye"."<br>"}
+         }
+  class C { use A,B}}
+
+$obj = new c ();
+$obj->greating();
+$obj->bye();
 ?>
