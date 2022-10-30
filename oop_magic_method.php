@@ -194,28 +194,69 @@
 // //  print_r($obj);
 #=================================__wakeup()====================================================
 
- class foo{
-    private $name;
-    private $phone;
+//  class foo{
+//     private $name;
+//     private $phone;
 
-    function setValue($sname,$sphone){
-        $this->name=$sname;
-        $this->phone=$sphone;
-    }
-    function __wakeup() #it's call auto when serialize ($obj) call in class below, just object serialize / decorating as the position 1st or 2nd etc;
-    {
-        echo "\n I can reconnect DataBase when unserialized\n";
+//     function setValue($sname,$sphone){
+//         $this->name=$sname;
+//         $this->phone=$sphone;
+//     }
+//     function __wakeup() #it's call auto when serialize ($obj) call in class below, just object serialize / decorating as the position 1st or 2nd etc;
+//     {
+//         echo "\n I can reconnect DataBase when unserialized\n";
         
         
-    }
- }
- $obj=new foo();
- $obj->setValue("Mukti","019456987"); #object convert into array;
+//     }
+//  }
+//  $obj=new foo();
+//  $obj->setValue("Mukti","019456987"); #object convert into array;
 
- $srl=serialize($obj);
- print_r($srl);
- $unsrl=unserialize($srl);
+//  $srl=serialize($obj);
+//  print_r($srl);
+//  $unsrl=unserialize($srl);
 
- print_r($unsrl);
+//  print_r($unsrl);
 
 //  print_r($obj);
+  #======================__clone()=================================
+
+// $a=5;
+// $b=& $a; #b point a  and if the change value of any (a or b ) variable then change for boths.
+// $b=10;
+// echo $b;
+#======================clone keyword used : for cloning the objects====================
+
+// class A{
+//     private $name ;
+//     function setValue($n){
+//         echo $this->name=$n;
+//     }
+// }
+
+// $obj= new A();
+// $obj->setValue("Md.Ashraful Momen\n");
+
+// $obj2= clone $obj;
+
+// $obj2->setValue("Shuvo");
+
+#===================================__invoke(): call object as function =======================================
+#call object of class as function getting error then __invoke() function automatically run and handle the error:
+
+// class A{
+//     private $name ;
+//     function __construct($n){
+//          echo $this->name=$n;
+//     }
+//     public function __invoke($k)
+//     {
+//         echo $this->name = $k;
+//     }
+// }
+
+// $obj= new A("Momen");
+
+
+// $obj("shuvo"); #we can't use this $obj () function without the __invoke() magic methods.
+
