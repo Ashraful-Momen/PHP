@@ -1,0 +1,58 @@
+<?php
+$menu =
+        [
+          
+                [
+                    0=>['one',"Home"]
+                ]
+            
+             ];
+            
+            //  echo $menu[3][0]['Services'][1][0];
+            //  echo"\n";
+
+            //  print_r($menu);
+    
+    foreach($menu as $k => $v )
+    {
+        
+         foreach($v as $k => $v)
+         {
+            foreach($v as $k => $v){
+                echo $v;
+            }
+         }
+    }
+====================================================================
+<?php
+$menu =
+        [
+          
+                [
+                    0=>['one',"Home"]
+                ],
+
+                [   0=>['tow', "About"]
+                ],
+                [   0=>['three',"Contact"]
+                
+                ],
+                [   0=>['four',"Services"=>[['a','b','c'],['d','e','f'],['l','h','y']]]
+                ],
+                [   0=>['five',"Blog"]
+                ]
+            
+             ];
+            
+            //  echo $menu[3][0]['Services'][1][0];
+            //  echo"\n";
+
+            //  print_r($menu);
+    
+    foreach($menu as $k => $v )
+    {
+        echo "[row ".$k."  [value V]:   ".$v[0][1]."\n";
+    }
+
+
+   # echo "[row number]=>".$k."  [value V]:   ".$v[0][1][1]."Second index value: ".$v[0]["1"]."\n";
