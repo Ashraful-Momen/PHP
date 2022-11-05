@@ -1,4 +1,5 @@
 <?php
+#Raw PHP with CRUD
 class db{
     public $host;
     public $username;
