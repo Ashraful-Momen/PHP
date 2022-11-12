@@ -1,0 +1,7 @@
+#include_once :  ('filename.php') => if i have many header function like 3 or 4 same header.php i'm include but 
+work only one header.php .... 
+
+#same to same require_once:  ('filename.php') work as include_once(): 
+
+#difference : include_once file if error other code will be worked ... but using require_once() function if 
+get error of it's file .... other code not be worked...
