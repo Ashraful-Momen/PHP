@@ -1,0 +1,63 @@
+Certainly, let's break down the access specifiers in PHP: public, protected, and private.
+1. Public (public)
+ * Visibility: Accessible from anywhere: within the class, from outside the class, from derived classes.
+ * Explanation:
+   * Most permissive access level.
+   * Members declared as public can be accessed and modified freely from any part of the code.
+2. Protected (protected)
+ * Visibility: Accessible from within the class, from derived classes, but not directly from outside the class.
+ * Explanation:
+   * Offers a level of encapsulation.
+   * Allows derived classes to inherit and use the protected members, enabling code reusability and flexibility within a class hierarchy.
+3. Private (private)
+ * Visibility: Accessible only from within the class itself.
+ * Explanation:
+   * Provides the highest level of encapsulation.
+   * Members declared as private are strictly confined to the class where they are defined.
+   * Derived classes cannot access or modify them.
+Example:
+class Animal {
+    public $name; 
+    protected $color; 
+    private $age; 
+
+    public function __construct($name, $color, $age) {
+        $this->name = $name;
+        $this->color = $color;
+        $this->age = $age;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+
+    protected function getColor() {
+        return $this->color;
+    }
+
+    private function getAge() {
+        return $this->age;
+    }
+}
+
+class Dog extends Animal { 
+    public function displayInfo() {
+        echo "Name: " . $this->name . "\n"; 
+        echo "Color: " . $this->getColor() . "\n"; 
+        // echo "Age: " . $this->age; // Error: Cannot access private property
+    }
+}
+
+$myDog = new Dog("Buddy", "Brown", 3);
+echo $myDog->name;        // Output: Buddy
+echo $myDog->getColor();   // Output: Brown
+// echo $myDog->age;        // Error: Cannot access private property
+
+Key Considerations:
+ * Choose the appropriate access level based on your design goals.
+ * Overuse of public can reduce encapsulation and make your code more susceptible to unintended modifications.
+ * Use protected when you want to allow derived classes to access and modify members while restricting access from outside the class.
+ * Use private to strictly enforce encapsulation and prevent unauthorized access to sensitive data.
+I hope this explanation clarifies the use of public, protected, and private access specifiers in PHP!
+ * https://github.com/Aleticod/PHP-Intermediate
+ * 
