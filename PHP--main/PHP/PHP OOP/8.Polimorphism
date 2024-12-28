@@ -1,0 +1,78 @@
+Polymorphism in PHP
+Polymorphism is a fundamental concept in object-oriented programming (OOP) that allows objects of different classes to be treated as objects of a common type. In simpler terms, it means "many forms."
+Key Concepts
+ * Method Overriding:
+   * When a subclass provides its own specific implementation for a method that is already defined in its parent class, it's called method overriding.
+   * This allows objects of the subclass to behave differently from objects of the parent class, even though they share the same method name.
+ * Interfaces:
+   * Interfaces define a contract of methods that a class must implement.
+   * Different classes can implement the same interface, providing their own unique implementations for the interface methods.
+   * This allows you to treat objects of these different classes in a uniform manner, even though they belong to different classes.
+Example (Method Overriding):
+class Animal {
+    public function makeSound() {
+        echo "Generic animal sound.\n";
+    }
+}
+
+class Dog extends Animal {
+    public function makeSound() {
+        echo "Woof!\n";
+    }
+}
+
+class Cat extends Animal {
+    public function makeSound() {
+        echo "Meow!\n";
+    }
+}
+
+$animals = array(new Animal(), new Dog(), new Cat());
+
+foreach ($animals as $animal) {
+    $animal->makeSound(); 
+}
+
+In this example:
+ * Animal is the parent class with a generic makeSound() method.
+ * Dog and Cat are subclasses that override the makeSound() method with their own specific implementations.
+ * The foreach loop iterates through the array of Animal objects (which includes instances of Dog and Cat).
+ * Although the array contains objects of different classes, the makeSound() method is called on each object, resulting in the appropriate sound for each animal.
+Example (Interfaces):
+interface Flyable {
+    public function fly();
+}
+
+class Bird implements Flyable {
+    public function fly() {
+        echo "Bird is flying.\n";
+    }
+}
+
+class Airplane implements Flyable {
+    public function fly() {
+        echo "Airplane is flying.\n";
+    }
+}
+
+function makeSomethingFly(Flyable $object) {
+    $object->fly();
+}
+
+makeSomethingFly(new Bird()); 
+makeSomethingFly(new Airplane()); 
+
+In this example:
+ * Flyable is an interface that defines the fly() method.
+ * Bird and Airplane are classes that implement the Flyable interface.
+ * The makeSomethingFly() function takes an object that implements the Flyable interface as an argument.
+ * You can pass objects of both Bird and Airplane to the makeSomethingFly() function, demonstrating how objects of different classes can be treated uniformly.
+Benefits of Polymorphism
+ * Code Reusability: By using polymorphism, you can write more generic code that can work with objects of different classes.
+ * Flexibility and Extensibility: Polymorphism makes your code more flexible and easier to extend with new classes that implement the same interfaces or override existing methods.
+ * Improved Maintainability: Polymorphism can make your code more maintainable by reducing code duplication and improving code organization.
+By understanding and effectively utilizing polymorphism, you can create more flexible, maintainable, and reusable object-oriented applications in PHP.
+ * https://www.scaler.com/topics/php-tutorial/polymorphism-in-php/
+ * https://unstop.com/blog/type-casting-and-type-conversion-in-cpp
+ * https://blog.csdn.net/Raymend_Lee/article/details/135067192
+ * 
