@@ -1,0 +1,69 @@
+In Python, decorators are a powerful syntactic sugar for modifying the behavior of functions or classes. They allow you to wrap a function or class with another function, adding extra functionality before, after, or around the original code.
+In PHP, while there's no direct equivalent to Python's @decorator syntax, you can achieve similar results using closures.
+Here's a breakdown of how to implement decorator-like behavior in PHP:
+1. Using Closures:
+ * Define a closure: A closure is an anonymous function that can capture variables from its surrounding scope.
+ * Pass the original function as an argument to the closure: This allows the closure to access and modify the original function's behavior.
+ * Return the closure: This creates a new function that incorporates the added functionality.
+<?php
+
+function myDecorator($func) {
+    return function ($arg) use ($func) {
+        echo "Before function execution\n";
+        $result = $func($arg);
+        echo "After function execution\n";
+        return $result;
+    };
+}
+
+function myFunction($arg) {
+    echo "Original function: $arg\n";
+}
+
+$decoratedFunction = myDecorator(myFunction);
+$decoratedFunction("Hello");
+?>
+
+Output:
+Before function execution
+Original function: Hello
+After function execution
+
+2. Using the __invoke Magic Method:
+ * Create a class that implements the __invoke magic method.
+ * In the __invoke method, add the desired functionality before and after calling the original function.
+<?php
+
+class MyDecorator {
+    protected $func;
+
+    public function __construct($func) {
+        $this->func = $func;
+    }
+
+    public function __invoke($arg) {
+        echo "Before function execution\n";
+        $result = ($this->func)($arg);
+        echo "After function execution\n";
+        return $result;
+    }
+}
+
+function myFunction($arg) {
+    echo "Original function: $arg\n";
+}
+
+$decorator = new MyDecorator(myFunction);
+$decorator("Hello");
+?>
+
+Output:
+Before function execution
+Original function: Hello
+After function execution
+
+Key Points:
+ * PHP's closure-based approach provides a flexible way to achieve decorator-like functionality.
+ * The __invoke magic method offers a more object-oriented way to implement decorators.
+ * While PHP doesn't have the concise syntax of Python's @decorator, these techniques effectively emulate the same behavior.
+By understanding these methods, you can effectively enhance your PHP code with decorator-like patterns, making it more modular, reusable, and maintainable.
