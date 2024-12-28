@@ -1,0 +1,69 @@
+Abstraction in PHP
+
+1. Main main functions that solve big problem 
+2. Avoid unnecessary code or task
+3. Reusable those function in many class
+4. Abstruction is a class that hold those functions and inherited by other class. 
+5. Example: show balance to customer. in a website use header and footer for every page... Etc
+--------------------------------------------------
+Abstraction is a fundamental concept in object-oriented programming (OOP) that focuses on hiding the complex implementation details of a class or object, while only exposing the essential features to the user. In PHP, abstraction is achieved through two primary mechanisms:
+1. Abstract Classes:
+ * An abstract class is a class that cannot be instantiated directly. It serves as a blueprint for other classes, defining common properties and methods that can be inherited by its subclasses.
+ * An abstract class can contain both concrete (regular) methods with implementations and abstract methods without implementations.
+ * Abstract methods are declared using the abstract keyword and have no body. Subclasses that inherit from an abstract class must provide implementations for all abstract methods.
+Example:
+abstract class Shape {
+    abstract public function calculateArea(); // Abstract method
+}
+
+class Circle extends Shape {
+    private $radius;
+
+    public function __construct($radius) {
+        $this->radius = $radius;
+    }
+
+    public function calculateArea() { // Implementing the abstract method
+        return pi() * $this->radius * $this->radius;
+    }
+}
+
+$circle = new Circle(5);
+echo "Area of the circle: " . $circle->calculateArea();
+
+2. Interfaces:
+ * An interface is a contract that defines a set of methods that a class must implement.
+ * Interfaces consist only of method signatures and constants, without any implementation.
+ * A class can implement multiple interfaces, providing a way to define shared behaviors across different classes.
+Example:
+interface Animal {
+    public function makeSound();
+}
+
+class Dog implements Animal {
+    public function makeSound() {
+        echo "Woof!\n";
+    }
+}
+
+class Cat implements Animal {
+    public function makeSound() {
+        echo "Meow!\n";
+    }
+}
+
+$dog = new Dog();
+$cat = new Cat();
+$dog->makeSound();
+$cat->makeSound();
+
+Key Points:
+ * Abstraction promotes code reusability and maintainability by hiding unnecessary details.
+ * Abstract classes provide a way to define common behaviors and properties for a group of related classes.
+ * Interfaces enforce a contract of methods that classes must implement, ensuring consistent behavior across different classes.
+ * Both abstract classes and interfaces are essential tools for building flexible and scalable object-oriented applications in PHP.
+By understanding and effectively using abstraction, you can create more modular, maintainable, and reusable code in your PHP projects.
+ * https://github.com/BhardwajG572/Assignments_OOPS_Aug_8
+ * https://github.com/jngrekta/PythonTutorials_Ekta
+ * https://owlbuddy.com/method-overriding-in-php
+ * https://en.wikipedia.org/wiki/Null_object_pattern
