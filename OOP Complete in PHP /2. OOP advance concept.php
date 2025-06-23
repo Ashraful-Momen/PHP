@@ -1,3 +1,19 @@
+1. use getter / setter : to set private_varibale value privately form other class
+
+2. method overloading (compile time polimorphism) : function name same but function parameter will be different . 
+                        funa(), funa(a), funa(a,b,c)
+
+3. method overwriting : fun name and number of parameters have to be the same. class => 
+                        class a {func a(int a )} ,class b extend a {func a(int a) {print ("hello");}}
+
+4. (compile time polimorphism) : in class => getting error when compile the code . 
+                                funa(int a ), funa(string a) .
+
+5. overloading and overwriting use in abstruction . 
+
+
+==========================================================================
+
 <?php
 
 // 1. GETTER/SETTER Example - Private variables accessed through methods
